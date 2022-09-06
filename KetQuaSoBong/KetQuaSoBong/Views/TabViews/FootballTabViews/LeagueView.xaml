@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="KetQuaSoBong.Views.TabViews.FootballTabViews.LeagueView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:football="clr-namespace:KetQuaSoBong.ViewModels.Football"
+    xmlns:md="clr-namespace:KetQuaSoBong.Models"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Padding="0"
+    BackgroundColor="Transparent"
+    HasShadow="False">
+    <Frame.Resources>
+        <ResourceDictionary>
+            <xct:ImageResource x:Key="MF" Id="KetQuaSoBong.Resources.Images.ic_more_f.png" />
+            <xct:ImageResource x:Key="ML" Id="KetQuaSoBong.Resources.Images.ic_more_l.png" />
+            <xct:ImageResource x:Key="IconUp" Id="KetQuaSoBong.Resources.Images.ic_up.png" />
+            <xct:ImageResource x:Key="IconDown" Id="KetQuaSoBong.Resources.Images.ic_down.png" />
+            <xct:ImageResource x:Key="Hearth" Id="KetQuaSoBong.Resources.Images.ic_heart.png" />
+        </ResourceDictionary>
+    </Frame.Resources>
+    <Frame.Content>
+        <StackLayout>
+         
+        </StackLayout>
+    </Frame.Content>
+</Frame>

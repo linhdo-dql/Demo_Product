@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="KetQuaSoBong.Views.TabViews.FootballTab"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    BackgroundColor="{StaticResource placeholderColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ImageResource x:Key="Layer" Id="KetQuaSoBong.Resources.Images.layer.png" />
+            <xct:ImageResource x:Key="Messi" Id="KetQuaSoBong.Resources.Images.ic_messi.png" />
+            <xct:ImageResource x:Key="FootballPlayer" Id="KetQuaSoBong.Resources.Images.ic_f_p.png" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="85" />
+                    <RowDefinition Height="30000" />
+                </Grid.RowDefinitions>
+                <WebView
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    HorizontalOptions="FillAndExpand"
+                    Source="https://www.nowgoal.com/football/"
+                    VerticalOptions="FillAndExpand" />
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Aspect="AspectFill"
+                    Source="{StaticResource Layer}" />
+
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Margin="50,0,0,0"
+                    HeightRequest="100"
+                    HorizontalOptions="Start"
+                    Source="{StaticResource FootballPlayer}"
+                    WidthRequest="120" />
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Margin="20,0,0,0"
+                    HeightRequest="80"
+                    HorizontalOptions="Start"
+                    Source="{StaticResource Messi}"
+                    WidthRequest="90" />
+                <Label
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Margin="160,0,0,30"
+                    HorizontalOptions="Start"
+                    LineHeight="1.1"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand"
+                    VerticalTextAlignment="End">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="RBo"
+                                FontSize="Large"
+                                Text="KẾT QUẢ BÓNG ĐÁ" />
+                            <Span Text="&#x0a;" />
+                            <Span FontFamily="RL" Text="      Cập nhật ngày: " />
+                            <Span FontFamily="RL" Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd/MM/yyyy}'}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+            <!--<StackLayout AbsoluteLayout.LayoutBounds="0,180,1,AutoSize"
+                             AbsoluteLayout.LayoutFlags="XProportional,WidthProportional">
+                    <footballTabViews:LeagueView />
+                    <footballTabViews:MathPlaying />
+                    <footballTabViews:UpdateScoreView />
+                </StackLayout>-->
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

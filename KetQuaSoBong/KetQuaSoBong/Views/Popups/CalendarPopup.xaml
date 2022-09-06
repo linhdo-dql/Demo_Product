@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xct:Popup
+    x:Class="KetQuaSoBong.Views.Popups.CalendarPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:md="clr-namespace:KetQuaSoBong.Models"
+    xmlns:popups="clr-namespace:KetQuaSoBong.Views.Popups"
+    xmlns:tk="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    tk:CornerRadiusEffect.CornerRadius="10"
+    x:DataType="popups:CalendarPopupVM"
+    Size="265,275">
+    <xct:Popup.Resources>
+        <ResourceDictionary>
+            <tk:ImageResource x:Key="Next" Id="KetQuaSoBong.Resources.Images.ic_next.png" />
+            <tk:ImageResource x:Key="Prev" Id="KetQuaSoBong.Resources.Images.ic_prev.png" />
+        </ResourceDictionary>
+    </xct:Popup.Resources>
+    <xct:Popup.Content>
+        <Grid
+            ColumnDefinitions="50,*,50"
+            ColumnSpacing="0"
+            RowDefinitions="50,30,*"
+            RowSpacing="1">
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                BackgroundColor="Gold" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                FontFamily="RBo"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="White"
+                VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Day}" />
+                        <Span Text="/" />
+                        <Span Text="{Binding Month}" />
+                        <Span Text="/" />
+                        <Span Text="{Binding Year}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,5"
+                HeightRequest="20"
+                Source="{StaticResource Prev}"
+                WidthRequest="20">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PrevMonthCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="10,5"
+                HeightRequest="20"
+                Source="{StaticResource Next}"
+                WidthRequest="20">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NextMonthCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
+                <CollectionView
+                    Margin="5,0"
+                    HeightRequest="40"
+                    VerticalOptions="Fill">
+                    <CollectionView.ItemsSource>
+                        <Array Type="{x:Type x:String}">
+                            <x:String>T2</x:String>
+                            <x:String>T3</x:String>
+                            <x:String>T4</x:String>
+                            <x:String>T5</x:String>
+                            <x:String>T6</x:String>
+                            <x:String>T7</x:String>
+                            <x:String>CN</x:String>
+                        </Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="7" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Label
+                                Margin="5,5"
+                                FontFamily="RBo"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding .}"
+                                TextColor="{StaticResource primaryColor}"
+                                VerticalTextAlignment="Center" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+            <CollectionView
+                x:Name="listDay"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="5,0"
+                ItemSizingStrategy="MeasureFirstItem"
+                ItemsSource="{Binding Calendar}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="5"
+                        Orientation="Vertical"
+                        Span="7" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="md:ItemCalendar">
+                        <Label
+                            x:Name="Number"
+                            Margin="5,0"
+                            tk:CornerRadiusEffect.CornerRadius="30"
+                            HeightRequest="{Binding ItemHeight}"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            IsEnabled="{Binding IsEnable}"
+                            Text="{Binding Number}"
+                            TextColor="{Binding NumberColor}"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="{Binding ItemWidth}">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsChecked}"
+                                    TargetType="Label"
+                                    Value="True">
+                                    <Setter Property="FontFamily" Value="RBo" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource primaryColor}" />
+                                    <Setter Property="TextColor" Value="White" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.SelectDateCommand, Source={x:Reference listDay}}" CommandParameter="{Binding Source={x:Reference Number}, Path=BindingContext}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </xct:Popup.Content>
+    <xct:Popup.Behaviors>
+        <tk:EventToCommandBehavior Command="{Binding DismissedCommand}" EventName="Dismissed" />
+    </xct:Popup.Behaviors>
+</xct:Popup>

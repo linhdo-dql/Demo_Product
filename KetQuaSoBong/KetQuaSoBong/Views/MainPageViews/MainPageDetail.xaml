@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="KetQuaSoBong.Views.MainPageViews.MainPageDetail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:KetQuaSoBong.Views.TabViews"
+    xmlns:mainpageviews="clr-namespace:KetQuaSoBong.Views.MainPageViews"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Kết quả số bóng"
+    android:TabbedPage.IsSmoothScrollEnabled="False"
+    android:TabbedPage.IsSwipePagingEnabled="False"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    x:DataType="mainpageviews:MainPageDetailVM">
+    <TabbedPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding CurrentPageChangedCommand}" EventName="CurrentPageChanged" />
+    </TabbedPage.Behaviors>
+    <NavigationPage.TitleView>
+        <Label
+            FontFamily="RBo"
+            FontSize="20"
+            Text="Kết quả số bóng"
+            TextColor="White" />
+    </NavigationPage.TitleView>
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <xct:ImageResource Id="KetQuaSoBong.Resources.Images.ic_xo_so_0.png" x:Key="XoSo" />
+            <xct:ImageResource Id="KetQuaSoBong.Resources.Images.ic_bong_da_0.png" x:Key="BongDa" />
+            <xct:ImageResource Id="KetQuaSoBong.Resources.Images.ic_binh_chon.png" x:Key="BinhChon" />
+            <xct:ImageResource Id="KetQuaSoBong.Resources.Images.ic_group_0.png" x:Key="Group" />
+            <xct:ImageResource Id="KetQuaSoBong.Resources.Images.ic_ho_tro_0.png" x:Key="HoTro" />
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <local:LotteryTab Title="Xổ số" IconImageSource="{StaticResource XoSo}" />
+    <local:FootballTab Title="Bóng đá" IconImageSource="{StaticResource BongDa}" />
+    <local:VotePage Title="Dự đoán" IconImageSource="{StaticResource BinhChon}" />
+    <local:GroupTab Title="Group" IconImageSource="{StaticResource Group}" />
+    <local:SupportTab Title="Hỗ trợ" IconImageSource="{StaticResource HoTro}" />
+</TabbedPage>

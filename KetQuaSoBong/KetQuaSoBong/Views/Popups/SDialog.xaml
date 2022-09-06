@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xct:Popup
+    x:Class="KetQuaSoBong.Views.Popups.SDialog"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popups="clr-namespace:KetQuaSoBong.Views.Popups"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:DataType="popups:SDialogVM"
+    Size="200,135">
+    <xct:Popup.Resources>
+        <xct:ImageResource x:Key="Logo" Id="KetQuaSoBong.Resources.Images.logo.png" />
+        <xct:ImageResource x:Key="IconUp" Id="KetQuaSoBong.Resources.Images.ic_up_2.png" />
+        <xct:ImageResource x:Key="IconDown" Id="KetQuaSoBong.Resources.Images.ic_down_2.png" />
+        <ControlTemplate x:Key="FrameRadioTemplate">
+            <Frame
+                Margin="2,2"
+                Padding="0"
+                HasShadow="False"
+                HeightRequest="40"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start">
+                <Grid Margin="4" WidthRequest="100">
+                    <ContentPresenter />
+                </Grid>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource primaryColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Frame>
+        </ControlTemplate>
+    </xct:Popup.Resources>
+    <xct:Popup.Content>
+        <Frame
+            x:Name="layoutGt"
+            Margin="30,0,30,10"
+            Padding="0"
+            BorderColor="LightGray"
+            CornerRadius="0"
+            HasShadow="False"
+            HeightRequest="155"
+            IsVisible="true">
+            <StackLayout Spacing="0">
+                <RadioButton
+                    x:Name="rdNam"
+                    ClassId="rdNam"
+                    ControlTemplate="{StaticResource FrameRadioTemplate}"
+                    IsChecked="True">
+                    <RadioButton.Content>
+                        <Label
+                            Margin="10,0,0,0"
+                            FontSize="15"
+                            Text="Nam"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Source={x:Reference rdNam}, Path=IsChecked}"
+                                    TargetType="Label"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="White" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </RadioButton.Content>
+                    <RadioButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SSelectedCommand}" CommandParameter="{x:Reference rdNam}" />
+                    </RadioButton.GestureRecognizers>
+                </RadioButton>
+                <RadioButton
+                    x:Name="rdNu"
+                    ClassId="rdNu"
+                    ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton.Content>
+                        <Label
+                            Margin="10,0,0,0"
+                            FontSize="15"
+                            Text="Nữ"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Source={x:Reference rdNu}, Path=IsChecked}"
+                                    TargetType="Label"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="White" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </RadioButton.Content>
+                    <RadioButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SSelectedCommand}" CommandParameter="{x:Reference rdNu}" />
+                    </RadioButton.GestureRecognizers>
+                </RadioButton>
+                <RadioButton
+                    x:Name="rdKhac"
+                    ClassId="rdKhac"
+                    ControlTemplate="{StaticResource FrameRadioTemplate}">
+                    <RadioButton.Content>
+                        <Label
+                            Margin="10,0,0,0"
+                            FontSize="15"
+                            Text="Khác"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Source={x:Reference rdKhac}, Path=IsChecked}"
+                                    TargetType="Label"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="White" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </RadioButton.Content>
+                    <RadioButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SSelectedCommand}" CommandParameter="{x:Reference rdKhac}" />
+                    </RadioButton.GestureRecognizers>
+                </RadioButton>
+            </StackLayout>
+        </Frame>
+    </xct:Popup.Content>
+</xct:Popup>

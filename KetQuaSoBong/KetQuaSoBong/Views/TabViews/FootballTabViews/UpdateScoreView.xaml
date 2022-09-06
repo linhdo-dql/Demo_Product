@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="KetQuaSoBong.Views.TabViews.FootballTabViews.UpdateScoreView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:md="clr-namespace:KetQuaSoBong.Models"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Padding="0">
+    <Frame.Resources>
+        <ResourceDictionary>
+            <xct:ImageResource x:Key="PL" Id="KetQuaSoBong.Resources.Images.ic_nc_premier.png" />
+            <xct:ImageResource x:Key="Laliga" Id="KetQuaSoBong.Resources.Images.ic_nc_laliga.png" />
+            <xct:ImageResource x:Key="SerieA" Id="KetQuaSoBong.Resources.Images.ic_nc_serieA.png" />
+            <xct:ImageResource x:Key="League1" Id="KetQuaSoBong.Resources.Images.ic_nc_league1.png" />
+            <xct:ImageResource x:Key="Bunesliga" Id="KetQuaSoBong.Resources.Images.ic_nc_bunesliga.png" />
+            <xct:ImageResource x:Key="IconUp" Id="KetQuaSoBong.Resources.Images.ic_up_2.png" />
+            <xct:ImageResource x:Key="IconDown" Id="KetQuaSoBong.Resources.Images.ic_down_2.png" />
+        </ResourceDictionary>
+    </Frame.Resources>
+    <Frame.Content>
+        <StackLayout Padding="0,0,0,10" Spacing="0">
+         
+        </StackLayout>
+    </Frame.Content>
+</Frame>

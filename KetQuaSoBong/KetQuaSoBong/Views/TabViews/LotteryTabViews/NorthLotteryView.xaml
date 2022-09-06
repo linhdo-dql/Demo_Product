@@ -1,0 +1,1431 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="KetQuaSoBong.Views.TabViews.LotteryTabViews.NorthLotteryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:viewModels="clr-namespace:KetQuaSoBong.ViewModels.Lottery"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:DataType="viewModels:NorthLoterryViewVM">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <xct:ImageResource x:Key="IconUp" Id="KetQuaSoBong.Resources.Images.ic_up.png" />
+            <xct:ImageResource x:Key="IconDown" Id="KetQuaSoBong.Resources.Images.ic_down.png" />
+            <xct:ImageResource x:Key="Uncheck" Id="KetQuaSoBong.Resources.Images.ic_uncheck.png" />
+            <xct:ImageResource x:Key="Checked" Id="KetQuaSoBong.Resources.Images.ic_checked.png" />
+            <xct:ImageResource x:Key="MLottery" Id="KetQuaSoBong.Resources.Images.ic_trung_2.png" />
+            <xct:ImageResource x:Key="SLottery" Id="KetQuaSoBong.Resources.Images.ic_nam_2.png" />
+            <xct:ImageResource x:Key="LotteryBall" Id="KetQuaSoBong.Resources.Images.ic_soi_cau_2.png" />
+            <xct:ImageResource x:Key="Calendar" Id="KetQuaSoBong.Resources.Images.ic_calendar_1.png" />
+            <ControlTemplate x:Key="RadioButton">
+                <Frame
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    HeightRequest="30"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    WidthRequest="70">
+                    <Grid Margin="4" WidthRequest="70">
+                        <ContentPresenter />
+                    </Grid>
+                </Frame>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout BackgroundColor="White" Spacing="0">
+            <Label
+                Padding="10,15,10,15"
+                BackgroundColor="Gold"
+                FontSize="Default"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            FontFamily="RBo"
+                            Text="XSMB "
+                            TextColor="{StaticResource primaryColor}" />
+                        <Span
+                            FontFamily="RM"
+                            Text="{Binding DateTimeNow, StringFormat='{0:ddd dd/MM/yyyy}'}"
+                            TextColor="White" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwitchToDetailPageCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label
+                Margin="1"
+                Padding="10,15,10,15"
+                BackgroundColor="White"
+                FontSize="Default"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding NorthLottery.IsRefresh}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            FontFamily="RBo"
+                            Text="Kí hiệu: "
+                            TextColor="{StaticResource primaryColor}" />
+                        <Span
+                            FontFamily="RBoI"
+                            Text="{Binding NorthLottery.KyHieu}"
+                            TextColor="{StaticResource primaryColor}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout
+                Margin="5"
+                BackgroundColor="Gray"
+                Spacing="0">
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HeightRequest="45">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            Grid.Column="0"
+                            BackgroundColor="{StaticResource placeholderColor}"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="ĐB"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="60" />
+                        <forms:AnimationView
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Animation="loading.json"
+                            AnimationSource="AssetOrBundle"
+                            BackgroundColor="{StaticResource placeholderColor}"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                            RepeatMode="Infinite"
+                            VerticalOptions="FillAndExpand" />
+
+                        <Label
+                            Grid.Column="1"
+                            BackgroundColor="{StaticResource placeholderColor}"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="{Binding NorthLottery.IsRefresh}"
+                            Text="{Binding NorthLottery.StrDacBiet}"
+                            TextColor="{StaticResource primaryColor}"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HeightRequest="45">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            Grid.Column="0"
+                            BackgroundColor="White"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G1"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="60" />
+                        <forms:AnimationView
+                            Grid.Column="1"
+                            Animation="loading.json"
+                            AnimationSource="AssetOrBundle"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                            RepeatMode="Infinite"
+                            VerticalOptions="FillAndExpand" />
+
+                        <Label
+                            Grid.Column="1"
+                            BackgroundColor="White"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="{Binding NorthLottery.IsRefresh}"
+                            Text="{Binding NorthLottery.StrG1}"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            BackgroundColor="{StaticResource placeholderColor}"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G2"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*"
+                            ColumnSpacing="1"
+                            HeightRequest="45"
+                            HorizontalOptions="FillAndExpand"
+                            RowSpacing="1">
+                            <forms:AnimationView
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="{StaticResource placeholderColor}"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+
+                            <!--  21  -->
+                            <Label
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="True"
+                                Text="{Binding NorthLottery.StrG21}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="{StaticResource placeholderColor}"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  22  -->
+
+                            <Label
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG22}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="{StaticResource placeholderColor}"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            BackgroundColor="White"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G3"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*,*"
+                            ColumnSpacing="1"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="45,45"
+                            RowSpacing="1">
+                            <!--  31  -->
+
+                            <Label
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG31}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  32  -->
+
+                            <Label
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG32}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+
+                            <!--  33  -->
+
+                            <Label
+                                Grid.Column="2"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG33}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="2"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+
+                            <!--  34  -->
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG34}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+
+                            <!--  35  -->
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG35}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+
+                            <!--  36  -->
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG36}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="2"
+                                    Grid.Row="1"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            BackgroundColor="{StaticResource placeholderColor}"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G4"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*,*,*"
+                            ColumnSpacing="1"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="45"
+                            RowSpacing="1">
+                           
+                            <!--  41  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG41}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+
+                            <!--  42  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG42}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                            <!--  43  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG43}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                            <!--  44  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG44}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            BackgroundColor="White"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G5"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*,*"
+                            ColumnSpacing="1"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="45,45"
+                            RowSpacing="1">
+                            
+
+                            <!--  51  -->
+
+                            <Label
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG51}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  52  -->
+
+                            <Label
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG52}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  53  -->
+
+                            <Label
+                                Grid.Column="2"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG53}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+
+                            <forms:AnimationView
+                                    Grid.Column="2"
+                                    Grid.Row="0"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  54  -->
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG54}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  55  -->
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG55}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+
+                            <!--  56  -->
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG56}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                    Grid.Column="2"
+                                    Grid.Row="1"
+                                    Animation="loading.json"
+                                    AnimationSource="AssetOrBundle"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                    RepeatMode="Infinite"
+                                    VerticalOptions="FillAndExpand" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            BackgroundColor="{StaticResource placeholderColor}"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G6"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*,*"
+                            ColumnSpacing="1"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="45"
+                            RowSpacing="1">
+                            
+                            <!--  61  -->
+
+                            <Label
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG61}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+
+                            <!--  62  -->
+
+                            <Label
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG62}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+
+                            <!--  63  -->
+
+                            <Label
+                                Grid.Column="2"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG63}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Column="2"
+                                Grid.Row="0"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="1,0,1,1"
+                    Padding="0"
+                    BackgroundColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Grid ColumnDefinitions="50,*" ColumnSpacing="1">
+                        <Label
+                            BackgroundColor="White"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G7"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+
+                        <Label
+                            BackgroundColor="White"
+                            FontFamily="RBo"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="G7"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="50" />
+                        <Grid
+                            Grid.Column="1"
+                            ColumnDefinitions="*,*,*,*"
+                            ColumnSpacing="1"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="45"
+                            RowSpacing="1">
+                         
+                            <!--  71  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG71}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+
+                            <!--  72  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG72}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                            <!--  73  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG73}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                            <!--  74  -->
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                BackgroundColor="White"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="{Binding NorthLottery.IsRefresh}"
+                                Text="{Binding NorthLottery.StrG74}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="50" />
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Animation="loading.json"
+                                AnimationSource="AssetOrBundle"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding NorthLottery.IsRefresh, Converter={xct:InvertedBoolConverter}}"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <StackLayout IsVisible="{Binding IsShowMore}" Spacing="0">
+                    <StackLayout
+                        Grid.Row="2"
+                        Margin="1,0,1,1"
+                        Padding="5"
+                        BackgroundColor="Red"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <RadioButton
+                            x:Name="rdAllNum"
+                            ClassId="AllNum"
+                            ControlTemplate="{StaticResource RadioButton}"
+                            IsChecked="True">
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="13"
+                                        HorizontalOptions="Start"
+                                        Source="{StaticResource Uncheck}"
+                                        WidthRequest="13">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference rdAllNum}, Path=IsChecked}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                <Setter Property="Source" Value="{StaticResource Checked}" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                    <Label
+                                        Margin="0,2,0,0"
+                                        FontFamily="RM"
+                                        FontSize="13"
+                                        Text="Đầy đủ"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                            <RadioButton.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NorthLottery.ChangeDisplayNumberCommand}" CommandParameter="{x:Reference rdAllNum}" />
+                            </RadioButton.GestureRecognizers>
+                        </RadioButton>
+                        <RadioButton
+                            x:Name="rd2Num"
+                            ClassId="2Num"
+                            ControlTemplate="{StaticResource RadioButton}">
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="13"
+                                        HorizontalOptions="Start"
+                                        Source="{StaticResource Uncheck}"
+                                        WidthRequest="13">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference rd2Num}, Path=IsChecked}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                <Setter Property="Source" Value="{StaticResource Checked}" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                    <Label
+                                        Margin="0,2,0,0"
+                                        FontFamily="RM"
+                                        FontSize="13"
+                                        Text="2 số"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                            <RadioButton.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NorthLottery.ChangeDisplayNumberCommand}" CommandParameter="{x:Reference rd2Num}" />
+                            </RadioButton.GestureRecognizers>
+                        </RadioButton>
+                        <RadioButton
+                            x:Name="rd3Num"
+                            ClassId="3Num"
+                            ControlTemplate="{StaticResource RadioButton}">
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="13"
+                                        HorizontalOptions="Start"
+                                        Source="{StaticResource Uncheck}"
+                                        WidthRequest="13">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference rd3Num}, Path=IsChecked}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                <Setter Property="Source" Value="{StaticResource Checked}" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                    <Label
+                                        Margin="0,2,0,0"
+                                        FontFamily="RM"
+                                        FontSize="13"
+                                        Text="3 số"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                            <RadioButton.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NorthLottery.ChangeDisplayNumberCommand}" CommandParameter="{x:Reference rd3Num}" />
+                            </RadioButton.GestureRecognizers>
+                        </RadioButton>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                            <Switch
+                                Margin="0"
+                                OnColor="Yellow"
+                                ThumbColor="White" />
+                            <Label
+                                Margin="0,1,0,0"
+                                Padding="0"
+                                FontFamily="RM"
+                                FontSize="13"
+                                HorizontalOptions="Start"
+                                Text="Thông báo"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Padding="0,10,0,5"
+                        BackgroundColor="White"
+                        HeightRequest="170"
+                        IsVisible="{Binding NorthLottery.IsRefresh}"
+                        Spacing="0">
+                        <Grid
+                            BackgroundColor="Gray"
+                            RowDefinitions="40,123"
+                            RowSpacing="0">
+                            <Label
+                                Grid.Row="0"
+                                Margin="1"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="Lô tô trực tiếp"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <CollectionView
+                                Grid.Row="1"
+                                Margin="1,0,1,1"
+                                ItemsSource="{Binding NorthLottery.ArrLoto}">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout
+                                        HorizontalItemSpacing="1"
+                                        Orientation="Vertical"
+                                        Span="9"
+                                        VerticalItemSpacing="1" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <Label
+                                            BackgroundColor="White"
+                                            FontFamily="RBo"
+                                            FontSize="16"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Fill"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding .}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Grid>
+                    </StackLayout>
+                    <Grid
+                        BackgroundColor="White"
+                        HeightRequest="455"
+                        IsVisible="{Binding NorthLottery.IsRefresh}">
+                        <Grid
+                            Margin="0,0,0,10"
+                            BackgroundColor="Gray"
+                            ColumnDefinitions="60,*,*,60"
+                            ColumnSpacing="1"
+                            RowDefinitions="40,*"
+                            RowSpacing="1">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="1,1,0,0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HeightRequest="40"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="Đầu"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="1,1,0,0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HeightRequest="40"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="Đầu"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,1,0,0"
+                                Padding="10,0,0,0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HeightRequest="40"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Start"
+                                Text="Đuôi"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Margin="0,1,0,0"
+                                Padding="0,0,10,0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HeightRequest="40"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="End"
+                                Text="Đuôi"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Margin="0,1,1,0"
+                                Padding="0,0,10,0"
+                                BackgroundColor="{StaticResource placeholderColor}"
+                                FontFamily="RBo"
+                                FontSize="16"
+                                HeightRequest="40"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="Đầu"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+                            <ListView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="1,0,0,0"
+                                IsEnabled="False"
+                                ItemsSource="{Binding NorthLottery.NumberTemp}"
+                                RowHeight="40"
+                                SelectionMode="None"
+                                SeparatorColor="Gray">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <ViewCell>
+                                            <Label
+                                                BackgroundColor="White"
+                                                FontFamily="RBo"
+                                                FontSize="16"
+                                                HeightRequest="40"
+                                                HorizontalOptions="Fill"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding .}"
+                                                TextColor="{StaticResource primaryColor}"
+                                                VerticalTextAlignment="Center" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListView
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                IsEnabled="False"
+                                ItemsSource="{Binding NorthLottery.LastNum}"
+                                RowHeight="40"
+                                SelectionMode="None"
+                                SeparatorColor="Gray">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <ViewCell>
+                                            <Label
+                                                Padding="10,0,0,0"
+                                                BackgroundColor="White"
+                                                FontFamily="RBo"
+                                                FontSize="16"
+                                                HeightRequest="40"
+                                                HorizontalOptions="Fill"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{Binding .}"
+                                                TextColor="Black"
+                                                VerticalTextAlignment="Center" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListView
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Margin="0,0,1,0"
+                                IsEnabled="False"
+                                ItemsSource="{Binding NorthLottery.NumberTemp}"
+                                RowHeight="40"
+                                SelectionMode="None"
+                                SeparatorColor="Gray">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <ViewCell>
+                                            <Label
+                                                BackgroundColor="White"
+                                                FontFamily="RBo"
+                                                FontSize="16"
+                                                HeightRequest="40"
+                                                HorizontalOptions="Fill"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding .}"
+                                                TextColor="{StaticResource primaryColor}"
+                                                VerticalTextAlignment="Center" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListView
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                IsEnabled="False"
+                                ItemsSource="{Binding NorthLottery.FirstNum}"
+                                RowHeight="40"
+                                SelectionMode="None"
+                                SeparatorColor="Gray">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <ViewCell>
+                                            <Label
+                                                Padding="0,0,10,0"
+                                                BackgroundColor="White"
+                                                FontFamily="RBo"
+                                                FontSize="16"
+                                                HeightRequest="40"
+                                                HorizontalOptions="Fill"
+                                                HorizontalTextAlignment="End"
+                                                Text="{Binding .}"
+                                                TextColor="Black"
+                                                VerticalTextAlignment="Center" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <Frame
+                Margin="0,10,0,10"
+                Padding="0"
+                BackgroundColor="{StaticResource primaryColor}"
+                BorderColor="Transparent"
+                CornerRadius="15"
+                HasShadow="False"
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsButtonVisible}"
+                VerticalOptions="Center"
+                WidthRequest="150">
+                <StackLayout
+                    Margin="10,0,0,0"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Label
+                        FontFamily="RBo"
+                        Text="Mở rộng"
+                        TextColor="White">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsShowMore}"
+                                TargetType="Label"
+                                Value="True">
+                                <Setter Property="Text" Value="Thu gọn" />
+                                <Setter Property="TextColor" Value="Black" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="15"
+                        Source="{StaticResource IconDown}"
+                        WidthRequest="15">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsShowMore}"
+                                TargetType="Image"
+                                Value="True">
+                                <Setter Property="Source" Value="{StaticResource IconUp}" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+
+                <Frame.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsShowMore}"
+                        TargetType="Frame"
+                        Value="True">
+                        <Setter Property="BackgroundColor" Value="White" />
+                        <Setter Property="BorderColor" Value="Black" />
+                    </DataTrigger>
+                </Frame.Triggers>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowMoreCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
