@@ -1,0 +1,108 @@
+
+.tab .nav-link {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px 25px;
+    border-radius: 0;
+    color: var(--color-black);
+    margin-bottom: 10px;
+}
+
+.tab .nav-link.active {
+    background-color: var(--color-primary);
+}
+
+
+.product-item {
+    position: relative;
+    padding: 10px;
+}
+
+.p-web {
+    height: 480px;
+    background: var(--bg-img);
+    background-size: cover;
+    background-position: top;
+    transition: ease-in-out 3s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.p-web:hover {
+    background-position: bottom;
+}
+
+.product-item:hover .overlay-products {
+    display: block;
+}
+
+.p-app {
+    height: 232px;
+    background: var(--bg-img) 100% 100%;
+    background-size: cover;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.overlay-products {
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+    display: none;
+}
+
+.p-title {
+    font-family: bannerTitleFont;
+    font-size: 1rem;
+    visibility: visible;
+    animation-name: zoomInLeft;
+    animation-duration: 0.3s;
+}
+
+.p-info {
+    visibility: visible;
+    animation-name: zoomInRight;
+    animation-duration: 0.3s;
+}
+
+.p-subtitle {
+    visibility: visible;
+    animation-name: zoomInLeft;
+    animation-duration: 0.3s;
+}
+
+.p-subtitle, .p-price-title {
+    font-size: 0.7rem;
+}
+
+.p-price-number {
+    font-family: bannerTitleFont;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--color-secondary-btn);
+}
+
+.p-price-note {
+    font-size: 0.5rem;
+    font-style: italic;
+}
+
+.p-link {
+    width: 100px;
+    height: 40px;
+    border: 2px solid var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+
+.p-link:hover {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+}

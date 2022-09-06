@@ -1,0 +1,183 @@
+
+
+.product-subtitle {
+    margin-top: 50px;
+    font-size: 1rem;
+    text-align: justify;
+    visibility: visible; 
+    animation-delay: 0.1s;
+    animation-name: zoomIn;
+}
+
+.product-subtitle strong {
+    font-family: bannerTitleFont;
+}
+
+.product-content__img-block__img {
+    animation-delay: 0.1s;
+    animation-name: zoomIn;
+    width: 300px;
+    height: 200px;
+    transform: scale(1.5);
+    margin: 0 auto;
+}
+
+.product-content__priority-items {
+    vertical-align: middle;
+    animation-delay: 0.1s;
+    line-height: 2rem;
+    animation-name: fadeInUp;
+}
+
+.product-content__priority-items .bi {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    padding-bottom: -10px;
+}
+
+.step-item__number {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    color: white;
+    background-color: var(--color-primary);
+    font-size: 1rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.step-item__content {
+    animation-delay: 0.1s; visibility: visible; animation-name: var(--animation-style);
+}
+
+.step-item__content h1 {
+    color: var(--color-primary);
+}
+
+.bill-item {
+    transition: transform 0.5s;
+}
+
+.bill-item:hover {
+    transform: translateY(-20px);
+}
+
+.bill-title { 
+    font-size: 2rem;
+    color: var(--color-pack);
+}
+
+.bill-subtitle { }
+
+.bill-old-price {
+    color: #62626280;
+    margin-right: 10px;
+}
+
+.bill-sale {
+    padding: 5px 10px;
+    background-color: red;
+    font-family: bannerTitleFont;
+    color: white;
+    border-radius: 50px;
+}
+
+.support-btn  {
+    padding: 10px 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: var(--color-pack);
+    border-radius: 20px;
+    border: 2px solid var(--color-pack);
+    font-family: bannerTitleFont;
+}
+
+    .support-btn:hover  {
+        color: var(--color-white);
+        background-color: var(--color-pack);
+        border: 2px solid var(--color-pack);
+    }
+
+    .bill-options__item i {
+        margin-right: 10px;
+        font-size: 2rem;
+    }
+
+    .bi-check {
+        color: green;
+    }
+
+    .bi-x {
+        color: red;
+    }
+
+    .bill-options__item p {
+       margin-bottom: 0;
+    }
+
+
+.input-group {
+    padding-top: 10px;
+}
+
+.input-item {
+  border: 2px solid var(--color-primary);
+  flex: 1;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.form-submit {
+    visibility: visible; 
+    animation-delay: 0.1s;
+    animation-name: zoomIn;
+}
+.contact-form-btn {
+    border: none;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    color: #ffffff;
+    background-color: #7b68ee;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    box-shadow: 0 7px 25px rgb(123 104 238 / 25%);
+    text-decoration: none;
+}
+
+
+    .contact-form-btn span {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-color: #3e57d0;
+        -webkit-transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+        transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        border-radius: 30px;
+    }
+
+    .contact-form-btn:hover, .default-btn:focus {
+        color: #ffffff;
+    }
+
+        .contact-form-btn:hover span, .default-btn:focus span {
+            width: 225%;
+            height: 562.5px;
+        }
+

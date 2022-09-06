@@ -1,0 +1,70 @@
+
+
+.address-tag-item {
+    border-top: 2px solid var(--color-primary);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    visibility: visible;
+    animation-name: zoomIn;
+    animation-duration: 2s;
+    border-radius: 5px;
+}
+
+.address-tag-item  h2 {
+    font-family: bannerTitleFont;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.address-tag-item  h3 {
+    font-family: bannerTitleFont;
+    line-height: 1.81rem;
+    font-size: 1.2rem;
+}
+
+.address-tag-item  h4 {
+    line-height: 1.2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.address-map {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-sizing: content-box;
+    visibility: visible;
+    animation-name: zoomIn;
+    animation-duration: 2s;
+    border-radius: 5px;
+}
+
+.cf-input-item {
+    height: 55px;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 2px solid var(--color-primary);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 15px;
+}
+
+.cf-textarea {
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 2px solid var(--color-primary);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 10px;
+}
+
+.cf-input-item:hover, .cf-textarea:hover {
+    box-shadow:none;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-send-message {
+    margin-top: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.contact-form {
+    visibility: visible;
+    animation-name: zoomIn;
+    animation-duration: 2s;
+}

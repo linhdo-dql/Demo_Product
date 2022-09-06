@@ -1,0 +1,151 @@
+.blog-detail-title {
+    font-family: bannerTitleFont;
+    font-size: 2.5rem;
+    text-align: justify;
+}
+
+.blog-detail-content { 
+    margin-top: 30px;
+    font-size: 1rem;
+    line-height: 2rem;
+    text-align: justify;
+}
+
+.blog-detail-social i {
+    background-color: #62626230;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+}
+
+.blog-detail-social i:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-5px);
+}
+
+.blog-detail-nav span {
+    font-family: bannerTitleFont;
+}
+
+.blog-detail-nav span:hover {
+    color: var(--color-primary);
+}
+
+.comment-items {
+    padding: 10px 0;
+}
+
+.comment-item__avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.comment-item__name {
+    font-family: bannerTitleFont;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+}
+
+.comment-item__time {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+}
+
+.comment-item__content {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.reply-btn {
+    padding: 5px 15px;
+    border:  1px solid #626262;
+    float: left;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.reply-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.comments-block {
+    margin-top: 50px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    animation-name: zoomIn;
+    animation-duration: 2s;
+}
+
+.comment-form__title {
+    font-family: bannerTitleFont;
+}
+
+.comment-form-input__item {
+    padding: 10px;
+    border: 1px solid #E9E6E6;
+    margin-bottom: 30px;
+    min-height: 40px;
+    flex: 1;
+}
+
+.comment-form-input__item:hover {
+    border: 1px solid var(--color-primary);
+}
+
+.post-comment-btn {
+    border: none;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    color: #ffffff;
+    background-color: #7b68ee;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    box-shadow: 0 7px 25px rgb(123 104 238 / 25%);
+    text-decoration: none;
+    visibility: visible; 
+    animation-delay: 0.1s;
+    animation-name: slideInRight;
+}
+
+
+    .post-comment-btn  span {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-color: #3e57d0;
+        -webkit-transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+        transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        border-radius: 30px;
+    }
+
+    .post-comment-btn:hover, .default-btn:focus {
+        color: #ffffff;
+    }
+
+        .post-comment-btn:hover span, .default-btn:focus span {
+            width: 225%;
+            height: 562.5px;
+        }

@@ -1,0 +1,158 @@
+
+.dialog-popup {
+    z-index: 2001;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.dialog-popup span {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.6rem;
+    z-index: 3002;
+}
+
+.product-img-popup {
+    width: 500px;
+    height: 800px;
+    background-size: cover;
+    background-position: top;
+    transition: ease-in-out 3s;
+   
+}
+
+.product-img-popup:hover {
+    background-position: bottom;
+}
+
+.left-products-info {
+    
+}
+
+.img-block {
+    height: 500px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow: hidden;
+    position: relative;
+    animation-name: zoomIn;
+    animation-duration: 2s;
+}
+
+.img-block img {
+    width: 100%;
+   position: absolute;
+   left: 0;
+   right: 0;
+}
+
+.child-img-block {
+    height: 100px;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.child-img-block img {
+    width: 100%;
+}
+
+.product-info-name {
+    font-size: 2.5rem;
+    text-align: justify;
+}
+
+.about-btn {
+    border: 2px solid var(--color-primary);
+    font-weight: 700;
+}
+
+.contact-us-btn {
+    font-weight: 700;
+}
+
+.p-detail-price-number {
+    font-size: 2rem;
+}
+/**
+ * Basic CSS Media Query Template
+ * TODO: I should probably use Sass...
+ * Author: Michael Vieth
+ * ------------------------------------------
+ *  Responsive Grid Media Queries - 1280, 1024, 768, 480
+ *   1280-1024   - desktop (default grid)
+ *   1024-768    - tablet landscape
+ *   768-480     - tablet 
+ *   480-less    - phone landscape & smaller
+ * --------------------------------------------
+ */
+ @media all and (min-width: 1024px) and (max-width: 1280px) {
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+}
+
+@media all and (max-width: 480px) {
+    .product-img-popup {
+        width: calc(100% - 100px);
+        height: calc(100% - 100px);
+        background: var(--bg-img);
+        background-size: cover;
+        background-position: top;
+        transition: ease-in-out 3s;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+    .img-block {
+        height: 300px;
+    }
+
+    .child-img-block {
+        height: 70px;
+    }
+}
+/* Portrait */
+@media screen and (orientation:portrait) { /* Portrait styles here */
+}
+/* Landscape */
+@media screen and (orientation:landscape) { /* Landscape styles here */
+}
+
+
+/* CSS for iPhone, iPad, and Retina Displays */
+
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+}
+
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation:portrait) {
+   
+}
+
+/* iPhone Landscape */
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+}
+
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation:portrait) {
+   
+}
+
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (orientation:landscape) {
+}
